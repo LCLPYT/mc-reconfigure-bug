@@ -9,7 +9,7 @@ Run a development server using:
 ```bash
 ./gradlew runServer
 ```
-Join the server and execute the following command:
+Join the server and execute the following command (you need op):
 ```
 /debugconfig config @s
 ```
