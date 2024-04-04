@@ -1,9 +1,21 @@
-# Fabric Example Mod
+# Minecraft reconfiguration bug fix demo
+Entering the configuration networking phase does not currently work, when transitioning from the play phase.
+The reason being a game message packet, which is sent on in the configuration protocol, which is unsupported.
 
-## Setup
+This small example mod demonstrates how this can be fixed.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Replication
+Run a development server using:
+```bash
+./gradlew runServer
+```
+Join the server and execute the following command:
+```
+/debugconfig config @s
+```
 
-## License
+## Patches (using mixins)
+The main fix here is in the `java/com/example/mixin/ServerPlayerMixin.java` class, which cancels the sending of system messages, when the configuration was requested earlier.
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+(optional) The other class `java/com/example/mixin/ServerGamePacketListenerImplMixin.java` is only there for demonstration purposes.
+It initiates the actual configuration start, so that the client is not stuck indefinitely.
