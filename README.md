@@ -1,4 +1,4 @@
-# Minecraft reconfiguration bug fix demo
+# MC-270378
 Entering the configuration networking phase does not currently work, when transitioning from the play phase.
 The reason being a game message packet, which is sent on in the configuration protocol, which is unsupported.
 
