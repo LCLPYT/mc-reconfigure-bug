@@ -4,15 +4,7 @@ The reason being a game message packet, which is sent on in the configuration pr
 
 This small example mod demonstrates how this can be fixed.
 
-## Replication
-Run a development server using:
-```bash
-./gradlew runServer
-```
-Join the server and execute the following command (you need op):
-```
-/debugconfig config @s
-```
+*The 1.20.4 version can be found [here](https://github.com/LCLPYT/mc-reconfigure-bug/tree/1.20.4)*.
 
 ## Patches (using mixins)
 The main fix here is in the `java/com/example/mixin/ServerPlayerMixin.java` class, which cancels the sending of system messages, when the configuration was requested earlier.
